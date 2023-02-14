@@ -1,15 +1,16 @@
 package server;
 
-//import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import shared.Constants;
 
+import server.threads.ClientHandler;
+import shared.Constants;
 import java.util.ArrayList;
 
 public class ServerApp {
     public static void main(String[] args) {
+        ArrayList<ClientHandler> clientSocketList = new ArrayList<>();
         try {
 
             ServerSocket serverSocket = new ServerSocket(Constants.SERVER_PORT);
@@ -17,15 +18,17 @@ public class ServerApp {
             while (true) {
                 System.out.println("========================");
                 System.out.println("Esperando por cliente...");
+                Socket clientSocket = serverSocket.accept();
+                
+                ClientHandler newClient = new ClientHandler(clientSocket);
+                
+                newClient.start();
 
+                clientSocketList.add(newClient);
             }
-
-            // System.out.println("========================");
-            // System.out.println("Cerrando el servidor");
-            // serverSocket.close();
         
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+        
             e.printStackTrace();
         }
     }
