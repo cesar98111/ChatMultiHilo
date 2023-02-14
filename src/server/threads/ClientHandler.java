@@ -9,4 +9,9 @@ public class ClientHandler extends Thread {
     public ClientHandler(Socket socket) {
         this.clientSocket = socket;
     }
+
+    @Override
+    public void run() {
+
+    }
 }
