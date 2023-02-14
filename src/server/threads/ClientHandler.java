@@ -1,6 +1,9 @@
 package server.threads;
 
+import java.io.DataInputStream;
+import java.io.IOException;
 import java.net.Socket;
+
 
 public class ClientHandler extends Thread {
 
