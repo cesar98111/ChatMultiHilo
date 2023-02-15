@@ -8,8 +8,10 @@ import java.net.Socket;
 public class ClientHandler extends Thread {
 
     private Socket clientSocket;
+    private MessageList listMessage;
 
-    public ClientHandler(Socket socket) {
+
+    public ClientHandler(Socket socket, MessageList listMessage) {
         this.clientSocket = socket;
     }
 
@@ -27,7 +29,10 @@ public class ClientHandler extends Thread {
 
             while (true) {
                 String clientMessage = fromClientStream.readUTF();
-                System.out.println(clientName + " dice: " + clientMessage);
+                String message = clientName + "dice: " + clientMessage;
+                listMessage.saveMessage(message);
+                System.out.println(message);
+                
                 if (clientMessage.equals("bye")) {
                     break;
                 }
