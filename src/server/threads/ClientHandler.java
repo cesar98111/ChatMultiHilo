@@ -13,6 +13,7 @@ public class ClientHandler extends Thread {
 
     public ClientHandler(Socket socket, MessageList listMessage) {
         this.clientSocket = socket;
+        this.listMessage = listMessage;
     }
 
     @Override
@@ -30,9 +31,9 @@ public class ClientHandler extends Thread {
             while (true) {
                 String clientMessage = fromClientStream.readUTF();
                 String message = clientName + "dice: " + clientMessage;
-                listMessage.saveMessage(message);
-                System.out.println(message);
                 
+                System.out.println(message);
+                listMessage.saveMessage(message);
                 if (clientMessage.equals("bye")) {
                     break;
                 }

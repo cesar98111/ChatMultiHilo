@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class MessageList {
     private List<String> messageList  = new ArrayList<String>();
-
+    
     synchronized public void saveMessage(String message){
 
         messageList.add(message);

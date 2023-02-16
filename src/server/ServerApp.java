@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+import java.io.ObjectOutputStream;
 import server.threads.ClientHandler;
 import server.threads.MessageList;
 import shared.Constants;
@@ -25,9 +25,8 @@ public class ServerApp {
                 System.out.println("========================");
                 System.out.println("Esperando por cliente...");
                 Socket clientSocket = serverSocket.accept();
-                List<String> messages = messageList.getMessage();
-                
-                // falta enviar la lista al cliente
+                ObjectOutputStream toList = new ObjectOutputStream(clientSocket.getOutputStream());
+                toList.writeObject(messageList.getMessage());
 
                 ClientHandler newClient = new ClientHandler(clientSocket, messageList);
                 
