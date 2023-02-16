@@ -31,8 +31,9 @@ public class ClientHandler extends Thread {
             while (true) {
                 String clientMessage = fromClientStream.readUTF();
                 String message = clientName + " " + clientMessage;
-                
                 System.out.println(message);
+                String withoutWordMessage = clientMessage.substring(7);
+                message = clientName + withoutWordMessage;
                 listMessage.saveMessage(message);
                 if (clientMessage.equals("bye")) {
                     break;
@@ -41,7 +42,7 @@ public class ClientHandler extends Thread {
             fromClientStream.close();
             System.out.println("-->" + clientName + " se ha ido.");
         } catch (IOException e) {
-            System.out.println("Oh no, esesión!");
+            System.out.println("Oh no, sesión!");
         }
     }
 }
