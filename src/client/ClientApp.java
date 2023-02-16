@@ -38,7 +38,12 @@ public class ClientApp {
             while (true) {
                 System.out.println("Introduce el mensaje pal servidor:");
                 String message = scanner.nextLine();
-                toServerStream.writeUTF(message);
+                String clientWordMessage = message.substring(0,7);
+                if (clientWordMessage.equals("message")) {
+                    toServerStream.writeUTF(message);
+                } else {
+                    System.out.println("Mensaje error");
+                }
                 
                 if (message.equals("bye")) {
                     break;

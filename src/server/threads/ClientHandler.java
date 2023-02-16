@@ -30,7 +30,7 @@ public class ClientHandler extends Thread {
 
             while (true) {
                 String clientMessage = fromClientStream.readUTF();
-                String message = clientName + "dice: " + clientMessage;
+                String message = clientName + " " + clientMessage;
                 
                 System.out.println(message);
                 listMessage.saveMessage(message);
