@@ -42,17 +42,16 @@ public class ClientApp {
                 if (message.equals("bye")) {
                     break;
                 } else if (message.length() <= 6) {
-                    System.out.println("Mensaje error");
+                    System.out.println("Error, La forma para enviar --> (message: <Texto del mensaje>)");
                 } else if (message.substring(0,8).equals("message:")){
                     toServerStream.writeUTF(message);
                 } else {
-                    System.out.println("Mensaje error");
+                    System.out.println("Error, La forma para enviar --> (message: <Texto del mensaje>)");
                 }
             }
 
             toServerStream.close();
 
-            
             scanner.close();
             socket.close();
 
