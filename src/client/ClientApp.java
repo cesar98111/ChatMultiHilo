@@ -43,7 +43,7 @@ public class ClientApp {
                     break;
                 } else if (message.length() <= 6) {
                     System.out.println("Mensaje error");
-                } else if (message.substring(0,7).equals("message")){
+                } else if (message.substring(0,8).equals("message:")){
                     toServerStream.writeUTF(message);
                 } else {
                     System.out.println("Mensaje error");
