@@ -28,7 +28,7 @@ public class ServerApp {
                 ObjectOutputStream toList = new ObjectOutputStream(clientSocket.getOutputStream());
                 toList.writeObject(messageList.getMessage());
 
-                ClientHandler newClient = new ClientHandler(clientSocket, messageList);
+                ClientHandler newClient = new ClientHandler(clientSocket, messageList,clientSocketList);
                 
                 newClient.start();
 
